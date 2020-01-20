@@ -17,7 +17,8 @@ async def statusup():
             for p in data['Config']:
                 if bt.status == discord.Status.online:
                     if p['status'] == "offline":
-                        await channel.send("Bot is online!")
+                        embed = discord.Embed(title="Bot is online!")
+                        await channel.send(embed=embed)
                         data = {}
                         data['Config'] = []
                         data['Config'].append({
@@ -27,7 +28,8 @@ async def statusup():
                             json.dump(data, outfile)
                 if bt.status == discord.Status.offline:
                     if p['status'] == "online":
-                        await channel.send("Bot is offline!")
+                        embed = discord.Embed(title="Bot is offline! :(")
+                        await channel.send(embed=embed)
                         data = {}
                         data['Config'] = []
                         data['Config'].append({

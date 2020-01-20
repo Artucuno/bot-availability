@@ -7,7 +7,7 @@ bot = commands.Bot(command_prefix=config.prefix)
 bot.remove_command("help")
 
 @tasks.loop(seconds=18.0)
-async def gameup():
+async def statusup():
     svr = bot.get_guild(662541523740786708) # Server
     bt = svr.get_member(391132891024850945) # Bot
     channel = bot.get_channel(662541926817333258) # Channel
@@ -37,6 +37,7 @@ async def gameup():
                             json.dump(data, outfile)
 @bot.event
 async def on_ready():
+    statusup.start()
     print("Started!")
     
 print("Starting...")
